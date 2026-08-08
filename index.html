@@ -3,602 +3,682 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toji Labs</title>
 
-<title>Toji Labs | Creative Apps</title>
-<meta name="description" content="Toji Labs creates powerful editing apps for mobile creators.">
-<a href="https://www.tiktok.com/@vynexx313" target="_blank">🎵 TikTok • @vynexx313</a>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+scroll-behavior:smooth;
 }
 
-body {
-  font-family: Inter, Arial, sans-serif;
-  background: #070707;
-  color: #fff;
-  overflow-x: hidden;
+body{
+font-family:Arial,sans-serif;
+background:#050505;
+color:white;
+overflow-x:hidden;
 }
 
-/* Background */
+/* ANIMATED BACKGROUND */
 
-body::before {
-  content: "";
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  background: #7c3aed;
-  filter: blur(180px);
-  opacity: .12;
-  top: -200px;
-  left: -150px;
-  pointer-events: none;
+.background{
+position:fixed;
+inset:0;
+z-index:-5;
+overflow:hidden;
+background:
+radial-gradient(circle at 20% 20%,#7c3aed25,transparent 30%),
+radial-gradient(circle at 80% 70%,#2563eb20,transparent 30%),
+#050505;
 }
 
-body::after {
-  content: "";
-  position: fixed;
-  width: 500px;
-  height: 500px;
-  background: #2563eb;
-  filter: blur(180px);
-  opacity: .10;
-  right: -200px;
-  bottom: -200px;
-  pointer-events: none;
+.orb{
+position:absolute;
+border-radius:50%;
+filter:blur(80px);
+animation:float 12s infinite alternate ease-in-out;
 }
 
-/* Navigation */
-
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(18px);
-  background: rgba(7,7,7,.75);
-  border-bottom: 1px solid rgba(255,255,255,.08);
+.orb.one{
+width:300px;
+height:300px;
+background:#7c3aed;
+opacity:.18;
+top:5%;
+left:5%;
 }
 
-.navbar {
-  max-width: 1100px;
-  margin: auto;
-  padding: 18px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.orb.two{
+width:350px;
+height:350px;
+background:#2563eb;
+opacity:.14;
+right:5%;
+top:35%;
+animation-delay:2s;
 }
 
-.logo {
-  font-size: 22px;
-  font-weight: 800;
-  letter-spacing: -1px;
+.orb.three{
+width:250px;
+height:250px;
+background:#ec4899;
+opacity:.10;
+left:40%;
+bottom:0;
+animation-delay:4s;
 }
 
-.logo span {
-  color: #8b5cf6;
+@keyframes float{
+from{
+transform:translate(0,0) scale(1);
+}
+to{
+transform:translate(100px,-80px) scale(1.25);
+}
 }
 
-.navlinks {
-  display: flex;
-  gap: 25px;
+/* PARTICLES */
+
+.particles{
+position:absolute;
+inset:0;
+background-image:
+radial-gradient(#ffffff35 1px,transparent 1px);
+background-size:45px 45px;
+animation:moveGrid 15s linear infinite;
+opacity:.25;
 }
 
-.navlinks a {
-  color: #aaa;
-  text-decoration: none;
-  font-size: 14px;
-  transition: .2s;
+@keyframes moveGrid{
+from{
+background-position:0 0;
+}
+to{
+background-position:45px 45px;
+}
 }
 
-.navlinks a:hover {
-  color: white;
+/* NAV */
+
+nav{
+position:sticky;
+top:0;
+z-index:100;
+background:#050505aa;
+backdrop-filter:blur(20px);
+border-bottom:1px solid #ffffff10;
 }
 
-/* Hero */
-
-.hero {
-  max-width: 1000px;
-  margin: auto;
-  padding: 120px 22px 100px;
-  text-align: center;
+.nav{
+max-width:1100px;
+margin:auto;
+padding:18px 22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
 }
 
-.tag {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 50px;
-  background: rgba(139,92,246,.12);
-  border: 1px solid rgba(139,92,246,.3);
-  color: #b794ff;
-  font-size: 13px;
-  margin-bottom: 25px;
+.logo{
+font-size:22px;
+font-weight:800;
 }
 
-.hero h1 {
-  font-size: clamp(48px, 9vw, 90px);
-  line-height: .95;
-  letter-spacing: -5px;
-  margin-bottom: 25px;
+.logo span{
+color:#9b6cff;
 }
 
-.gradient {
-  background: linear-gradient(90deg,#fff,#a78bfa,#60a5fa);
-  -webkit-background-clip: text;
-  color: transparent;
+.navlinks{
+display:flex;
+gap:25px;
 }
 
-.hero p {
-  max-width: 600px;
-  margin: auto;
-  color: #999;
-  font-size: 18px;
-  line-height: 1.7;
+.navlinks a{
+color:#888;
+text-decoration:none;
+font-size:14px;
+transition:.3s;
 }
 
-.hero-buttons {
-  margin-top: 35px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
+.navlinks a:hover{
+color:white;
 }
 
-.button {
-  text-decoration: none;
-  padding: 14px 22px;
-  border-radius: 12px;
-  font-weight: 700;
-  font-size: 14px;
-  transition: .25s;
+/* HERO */
+
+.hero{
+min-height:90vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:80px 20px;
 }
 
-.primary {
-  background: white;
-  color: black;
+.badge{
+padding:9px 15px;
+border:1px solid #8b5cf655;
+background:#8b5cf615;
+border-radius:50px;
+color:#bda5ff;
+font-size:13px;
+margin-bottom:25px;
+animation:pulse 3s infinite;
 }
 
-.primary:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 35px rgba(255,255,255,.15);
+@keyframes pulse{
+50%{
+box-shadow:0 0 30px #8b5cf622;
+}
 }
 
-.secondary {
-  border: 1px solid #333;
-  color: white;
+.hero h1{
+font-size:clamp(55px,10vw,100px);
+line-height:.9;
+letter-spacing:-6px;
+animation:appear 1s ease;
 }
 
-.secondary:hover {
-  border-color: #777;
+.gradient{
+background:linear-gradient(
+90deg,
+#ffffff,
+#9b6cff,
+#60a5fa,
+#ffffff
+);
+background-size:300%;
+-webkit-background-clip:text;
+color:transparent;
+animation:gradient 5s infinite linear;
 }
 
-/* Stats */
-
-.stats {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 15px;
+@keyframes gradient{
+to{
+background-position:300%;
+}
 }
 
-.stat {
-  background: #0d0d0d;
-  border: 1px solid #202020;
-  padding: 25px;
-  border-radius: 18px;
-  text-align: center;
+.hero p{
+max-width:600px;
+margin:30px auto;
+color:#888;
+line-height:1.7;
+font-size:17px;
 }
 
-.stat h2 {
-  font-size: 28px;
+@keyframes appear{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
-.stat p {
-  color: #777;
-  font-size: 13px;
-  margin-top: 5px;
+.buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+justify-content:center;
 }
 
-/* Sections */
-
-section {
-  max-width: 1100px;
-  margin: auto;
-  padding: 90px 22px;
+.button{
+padding:14px 22px;
+border-radius:12px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
 }
 
-.section-title {
-  margin-bottom: 40px;
+.primary{
+background:white;
+color:black;
 }
 
-.section-title small {
-  color: #8b5cf6;
-  font-weight: 700;
+.primary:hover{
+transform:translateY(-5px);
+box-shadow:0 15px 40px #ffffff20;
 }
 
-.section-title h2 {
-  font-size: 42px;
-  margin-top: 8px;
-  letter-spacing: -2px;
+.secondary{
+border:1px solid #333;
+color:white;
 }
 
-/* Apps */
-
-.apps {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 20px;
+.secondary:hover{
+border-color:#8b5cf6;
+transform:translateY(-5px);
 }
 
-.card {
-  position: relative;
-  background: linear-gradient(145deg,#111,#0b0b0b);
-  border: 1px solid #222;
-  border-radius: 24px;
-  padding: 30px;
-  overflow: hidden;
-  transition: .3s;
+/* SCROLL */
+
+.scroll{
+margin-top:70px;
+color:#555;
+font-size:12px;
+animation:bounce 2s infinite;
 }
 
-.card:hover {
-  transform: translateY(-7px);
-  border-color: #5b21b6;
+@keyframes bounce{
+50%{
+transform:translateY(8px);
+}
 }
 
-.app-icon {
-  width: 65px;
-  height: 65px;
-  border-radius: 17px;
-  background: linear-gradient(135deg,#8b5cf6,#2563eb);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 27px;
-  font-weight: 900;
-  margin-bottom: 25px;
+/* SECTIONS */
+
+section{
+max-width:1100px;
+margin:auto;
+padding:100px 20px;
 }
 
-.card h3 {
-  font-size: 25px;
-  margin-bottom: 10px;
+.title small{
+color:#9b6cff;
+font-weight:bold;
 }
 
-.card p {
-  color: #888;
-  line-height: 1.6;
-  margin-bottom: 22px;
+.title h2{
+font-size:45px;
+margin-top:10px;
+letter-spacing:-2px;
 }
 
-.version {
-  display: inline-block;
-  color: #aaa;
-  background: #181818;
-  padding: 6px 10px;
-  border-radius: 7px;
-  font-size: 11px;
-  margin-bottom: 20px;
+/* APPS */
+
+.apps{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+margin-top:40px;
 }
 
-.download {
-  display: inline-block;
-  background: #8b5cf6;
-  color: white;
-  text-decoration: none;
-  padding: 12px 18px;
-  border-radius: 10px;
-  font-weight: 700;
-  transition: .2s;
+.card{
+background:#0d0d0dcc;
+border:1px solid #ffffff12;
+border-radius:25px;
+padding:30px;
+backdrop-filter:blur(15px);
+transition:.4s;
+position:relative;
+overflow:hidden;
 }
 
-.download:hover {
-  background: #a78bfa;
-  transform: translateY(-2px);
+.card::before{
+content:"";
+position:absolute;
+width:200px;
+height:200px;
+background:#8b5cf6;
+filter:blur(100px);
+opacity:.08;
+right:-80px;
+top:-80px;
 }
 
-/* Features */
-
-.features {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 15px;
+.card:hover{
+transform:translateY(-10px) scale(1.01);
+border-color:#8b5cf655;
+box-shadow:0 20px 70px #000;
 }
 
-.feature {
-  padding: 25px;
-  border: 1px solid #202020;
-  background: #0d0d0d;
-  border-radius: 18px;
+.icon{
+width:70px;
+height:70px;
+border-radius:20px;
+background:linear-gradient(
+135deg,
+#8b5cf6,
+#2563eb
+);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:30px;
+font-weight:bold;
+margin-bottom:25px;
+box-shadow:0 10px 40px #8b5cf633;
 }
 
-.feature-icon {
-  font-size: 25px;
-  margin-bottom: 15px;
+.version{
+display:inline-block;
+background:#181818;
+color:#aaa;
+padding:6px 10px;
+border-radius:8px;
+font-size:11px;
+margin-bottom:15px;
 }
 
-.feature h3 {
-  margin-bottom: 8px;
+.card h3{
+font-size:26px;
+margin-bottom:10px;
 }
 
-.feature p {
-  color: #777;
-  line-height: 1.5;
-  font-size: 14px;
+.card p{
+color:#888;
+line-height:1.6;
+margin-bottom:22px;
 }
 
-/* CTA */
-
-.cta {
-  text-align: center;
-  padding: 90px 20px;
-  border: 1px solid #222;
-  border-radius: 30px;
-  background:
-    radial-gradient(circle at center,rgba(124,58,237,.15),transparent 60%),
-    #0b0b0b;
+.download{
+display:inline-block;
+background:#8b5cf6;
+color:white;
+padding:13px 20px;
+border-radius:11px;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
 }
 
-.cta h2 {
-  font-size: 42px;
-  margin-bottom: 15px;
+.download:hover{
+background:#a78bfa;
+transform:translateX(5px);
 }
 
-.cta p {
-  color: #888;
-  margin-bottom: 25px;
+/* FEATURES */
+
+.features{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px;
+margin-top:40px;
 }
 
-/* Footer */
-
-footer {
-  border-top: 1px solid #1c1c1c;
-  padding: 35px 20px;
-  text-align: center;
-  color: #666;
-  font-size: 13px;
+.feature{
+background:#0c0c0ccc;
+border:1px solid #ffffff10;
+border-radius:20px;
+padding:27px;
+transition:.3s;
+backdrop-filter:blur(10px);
 }
 
-footer span {
-  color: #8b5cf6;
+.feature:hover{
+transform:translateY(-8px);
+border-color:#8b5cf644;
 }
 
-/* Mobile */
+.feature-icon{
+font-size:28px;
+margin-bottom:15px;
+}
 
-@media(max-width:700px) {
+.feature h3{
+margin-bottom:9px;
+}
 
-  .navlinks {
-    display: none;
-  }
+.feature p{
+color:#777;
+line-height:1.6;
+font-size:14px;
+}
 
-  .hero {
-    padding-top: 90px;
-  }
+/* SOCIAL */
 
-  .hero h1 {
-    letter-spacing: -3px;
-  }
+.social{
+max-width:1000px;
+margin:50px auto;
+padding:80px 20px;
+text-align:center;
+border:1px solid #ffffff12;
+border-radius:30px;
+background:
+radial-gradient(circle,#8b5cf622,transparent 60%),
+#0a0a0a;
+}
 
-  .stats,
-  .apps,
-  .features {
-    grid-template-columns: 1fr;
-  }
+.social h2{
+font-size:40px;
+margin-bottom:12px;
+}
 
-  section {
-    padding: 65px 18px;
-  }
+.social p{
+color:#777;
+margin-bottom:25px;
+}
 
-  .section-title h2 {
-    font-size: 34px;
-  }
+/* FOOTER */
 
-  .cta h2 {
-    font-size: 32px;
-  }
+footer{
+border-top:1px solid #ffffff10;
+padding:40px;
+text-align:center;
+color:#555;
+font-size:13px;
+}
+
+footer span{
+color:#9b6cff;
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.navlinks{
+display:none;
+}
+
+.hero{
+min-height:85vh;
+}
+
+.hero h1{
+letter-spacing:-4px;
+}
+
+.apps,
+.features{
+grid-template-columns:1fr;
+}
+
+section{
+padding:70px 18px;
+}
+
+.title h2{
+font-size:34px;
+}
+
+.social{
+margin:20px;
+}
+
 }
 </style>
 </head>
 
 <body>
 
+<div class="background">
+<div class="particles"></div>
+<div class="orb one"></div>
+<div class="orb two"></div>
+<div class="orb three"></div>
+</div>
+
 <nav>
-  <div class="navbar">
-    <div class="logo">Toji <span>Labs</span></div>
+<div class="nav">
 
-    <div class="navlinks">
-      <a href="#apps">Apps</a>
-      <a href="#features">Features</a>
-      <a href="#about">About</a>
-    </div>
-  </div>
+<div class="logo">
+Toji <span>Labs</span>
+</div>
+
+<div class="navlinks">
+<a href="#apps">Apps</a>
+<a href="#features">Features</a>
+<a href="#social">Social</a>
+</div>
+
+</div>
 </nav>
-
-<!-- HERO -->
 
 <div class="hero">
 
-  <div class="tag">
-    ✦ Independent Creative Software
-  </div>
+<div class="badge">
+✦ INDEPENDENT CREATIVE SOFTWARE
+</div>
 
-  <h1>
-    Create.<br>
-    <span class="gradient">Edit. Repeat.</span>
-  </h1>
+<h1>
+CREATE.<br>
+<span class="gradient">EDIT. REPEAT.</span>
+</h1>
 
-  <p>
-    Toji Labs builds powerful editing tools designed
-    for creators who want more control over their content.
-  </p>
+<p>
+Powerful editing tools built for mobile creators.
+Welcome to Toji Labs.
+</p>
 
-  <div class="hero-buttons">
+<div class="buttons">
 
-    <a href="#apps" class="button primary">
-      Explore Apps
-    </a>
+<a href="#apps" class="button primary">
+Explore Apps
+</a>
 
-    <a href="#about" class="button secondary">
-      Learn More
-    </a>
-
-  </div>
+<a
+href="https://github.com/vynexx313/tojilabapps"
+target="_blank"
+class="button secondary">
+GitHub
+</a>
 
 </div>
 
-<!-- STATS -->
-
-<div class="stats">
-
-  <div class="stat">
-    <h2>01</h2>
-    <p>Current App</p>
-  </div>
-
-  <div class="stat">
-    <h2>2026</h2>
-    <p>Founded</p>
-  </div>
-
-  <div class="stat">
-    <h2>∞</h2>
-    <p>Ideas</p>
-  </div>
-
+<div class="scroll">
+SCROLL ↓
 </div>
 
-<!-- APPS -->
+</div>
 
 <section id="apps">
 
-  <div class="section-title">
-    <small>OUR SOFTWARE</small>
-    <h2>Apps built for creators.</h2>
-  </div>
+<div class="title">
+<small>OUR SOFTWARE</small>
+<h2>Built for creators.</h2>
+</div>
 
-  <div class="apps">
+<div class="apps">
 
-    <div class="card">
+<div class="card">
 
-      <div class="app-icon">
-        T
-      </div>
+<div class="icon">
+T
+</div>
 
-      <span class="version">
-        ANDROID • v4.0
-      </span>
+<span class="version">
+ANDROID • v4.0
+</span>
 
-      <h3>Toji Motion</h3>
+<h3>
+Toji Motion
+</h3>
 
-      <p>
-        A powerful mobile editing experience
-        built for creators, editors and content makers.
-      </p>
+<p>
+A powerful mobile editing app designed
+for creators and video editors.
+</p>
 
-      <a
-        class="download"
-        href="https://www.mediafire.com/file/pyqtukcvnxyvc3p/Toji_Motion_4_Jul.apk/download"
-        target="_blank">
-        Download APK →
-      </a>
+<a
+class="download"
+href="https://www.mediafire.com/file/pyqtukcvnxyvc3p/Toji_Motion_4_Jul.apk/download"
+target="_blank">
+Download APK →
+</a>
 
-    </div>
+</div>
 
-    <div class="card">
+<div class="card">
 
-      <div class="app-icon">
-        +
-      </div>
+<div class="icon">
++
+</div>
 
-      <span class="version">
-        COMING SOON
-      </span>
+<span class="version">
+COMING SOON
+</span>
 
-      <h3>More Projects</h3>
+<h3>
+More Projects
+</h3>
 
-      <p>
-        More editing tools and creative projects
-        are currently being developed by Toji Labs.
-      </p>
+<p>
+More creative tools are currently
+being developed by Toji Labs.
+</p>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
 </section>
-
-<!-- FEATURES -->
 
 <section id="features">
 
-  <div class="section-title">
-    <small>WHY TOJI LABS</small>
-    <h2>Made different.</h2>
-  </div>
+<div class="title">
+<small>FEATURES</small>
+<h2>Why Toji Labs?</h2>
+</div>
 
-  <div class="features">
+<div class="features">
 
-    <div class="feature">
-      <div class="feature-icon">⚡</div>
-      <h3>Fast</h3>
-      <p>
-        Designed to keep your workflow quick
-        and your editing process smooth.
-      </p>
-    </div>
+<div class="feature">
+<div class="feature-icon">⚡</div>
+<h3>Fast</h3>
+<p>
+Designed for smooth and efficient
+editing workflows.
+</p>
+</div>
 
-    <div class="feature">
-      <div class="feature-icon">🎨</div>
-      <h3>Creative</h3>
-      <p>
-        Tools focused on giving creators
-        more freedom and control.
-      </p>
-    </div>
+<div class="feature">
+<div class="feature-icon">🎨</div>
+<h3>Creative</h3>
+<p>
+Tools made to give creators more
+freedom and control.
+</p>
+</div>
 
-    <div class="feature">
-      <div class="feature-icon">📱</div>
-      <h3>Mobile First</h3>
-      <p>
-        Built with mobile creators in mind
-        from the beginning.
-      </p>
-    </div>
+<div class="feature">
+<div class="feature-icon">📱</div>
+<h3>Mobile First</h3>
+<p>
+Built specifically for mobile creators.
+</p>
+</div>
 
-  </div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section id="about">
-
-  <div class="cta">
-
-    <h2>Built by creators.</h2>
-
-    <p>
-      Toji Labs is an independent project focused
-      on building useful creative software.
-    </p>
-
-    <a
-      href="https://github.com/vynexx313/tojilabapps"
-      target="_blank"
-      class="button secondary">
-      View GitHub →
-    </a>
-
-  </div>
+</div>
 
 </section>
+
+<div class="social" id="social">
+
+<h2>Follow Toji Labs</h2>
+
+<p>
+Edits, updates and new projects.
+</p>
+
+<a
+href="https://www.tiktok.com/@vynexx313"
+target="_blank"
+class="button primary">
+TikTok • @vynexx313
+</a>
+
+</div>
 
 <footer>
-  © 2026 <span>Toji Labs</span>. All rights reserved.
+© 2026 <span>Toji Labs</span> · Built for creators.
 </footer>
 
 </body>

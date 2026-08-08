@@ -1,80 +1,288 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Toji Labs</title>
+
+<title>Toji Labs | Creative Apps</title>
+<meta name="description" content="Toji Labs creates powerful editing apps for mobile creators.">
 
 <style>
 * {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: #080808;
-  color: white;
-  min-height: 100vh;
+  font-family: Inter, Arial, sans-serif;
+  background: #070707;
+  color: #fff;
+  overflow-x: hidden;
 }
 
-header {
-  padding: 25px;
-  text-align: center;
-  border-bottom: 1px solid #222;
+/* Background */
+
+body::before {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: #7c3aed;
+  filter: blur(180px);
+  opacity: .12;
+  top: -200px;
+  left: -150px;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  background: #2563eb;
+  filter: blur(180px);
+  opacity: .10;
+  right: -200px;
+  bottom: -200px;
+  pointer-events: none;
+}
+
+/* Navigation */
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(18px);
+  background: rgba(7,7,7,.75);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.navbar {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -1px;
 }
 
 .logo span {
   color: #8b5cf6;
 }
 
+.navlinks {
+  display: flex;
+  gap: 25px;
+}
+
+.navlinks a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+  transition: .2s;
+}
+
+.navlinks a:hover {
+  color: white;
+}
+
+/* Hero */
+
 .hero {
+  max-width: 1000px;
+  margin: auto;
+  padding: 120px 22px 100px;
   text-align: center;
-  padding: 70px 20px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 50px;
+  background: rgba(139,92,246,.12);
+  border: 1px solid rgba(139,92,246,.3);
+  color: #b794ff;
+  font-size: 13px;
+  margin-bottom: 25px;
 }
 
 .hero h1 {
-  font-size: 48px;
-  margin-bottom: 15px;
+  font-size: clamp(48px, 9vw, 90px);
+  line-height: .95;
+  letter-spacing: -5px;
+  margin-bottom: 25px;
+}
+
+.gradient {
+  background: linear-gradient(90deg,#fff,#a78bfa,#60a5fa);
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 .hero p {
+  max-width: 600px;
+  margin: auto;
   color: #999;
   font-size: 18px;
+  line-height: 1.7;
 }
 
-.apps {
+.hero-buttons {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.button {
+  text-decoration: none;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: .25s;
+}
+
+.primary {
+  background: white;
+  color: black;
+}
+
+.primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 35px rgba(255,255,255,.15);
+}
+
+.secondary {
+  border: 1px solid #333;
+  color: white;
+}
+
+.secondary:hover {
+  border-color: #777;
+}
+
+/* Stats */
+
+.stats {
   max-width: 900px;
   margin: auto;
   padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
+}
+
+.stat {
+  background: #0d0d0d;
+  border: 1px solid #202020;
+  padding: 25px;
+  border-radius: 18px;
+  text-align: center;
+}
+
+.stat h2 {
+  font-size: 28px;
+}
+
+.stat p {
+  color: #777;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* Sections */
+
+section {
+  max-width: 1100px;
+  margin: auto;
+  padding: 90px 22px;
+}
+
+.section-title {
+  margin-bottom: 40px;
+}
+
+.section-title small {
+  color: #8b5cf6;
+  font-weight: 700;
+}
+
+.section-title h2 {
+  font-size: 42px;
+  margin-top: 8px;
+  letter-spacing: -2px;
+}
+
+/* Apps */
+
+.apps {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 20px;
 }
 
 .card {
-  background: #111;
+  position: relative;
+  background: linear-gradient(145deg,#111,#0b0b0b);
   border: 1px solid #222;
-  border-radius: 18px;
-  padding: 25px;
-  margin-bottom: 20px;
-  transition: 0.25s;
+  border-radius: 24px;
+  padding: 30px;
+  overflow: hidden;
+  transition: .3s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  border-color: #8b5cf6;
+  transform: translateY(-7px);
+  border-color: #5b21b6;
 }
 
-.card h2 {
-  margin-bottom: 8px;
+.app-icon {
+  width: 65px;
+  height: 65px;
+  border-radius: 17px;
+  background: linear-gradient(135deg,#8b5cf6,#2563eb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 27px;
+  font-weight: 900;
+  margin-bottom: 25px;
+}
+
+.card h3 {
+  font-size: 25px;
+  margin-bottom: 10px;
 }
 
 .card p {
-  color: #999;
-  margin-bottom: 18px;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+
+.version {
+  display: inline-block;
+  color: #aaa;
+  background: #181818;
+  padding: 6px 10px;
+  border-radius: 7px;
+  font-size: 11px;
+  margin-bottom: 20px;
 }
 
 .download {
@@ -82,181 +290,315 @@ header {
   background: #8b5cf6;
   color: white;
   text-decoration: none;
-  padding: 12px 20px;
+  padding: 12px 18px;
   border-radius: 10px;
-  font-weight: bold;
+  font-weight: 700;
+  transition: .2s;
 }
 
 .download:hover {
   background: #a78bfa;
+  transform: translateY(-2px);
 }
 
-.badge {
-  display: inline-block;
-  background: #222;
-  color: #aaa;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  margin-bottom: 12px;
+/* Features */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 15px;
 }
 
-footer {
-  text-align: center;
-  color: #666;
-  padding: 50px 20px;
-}
-</style>
-</head>
-
-<body>
-
-<header>
-  <div class="logo">Toji <span>Labs</span></div>
-</head<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: #080808;
-  color: white;
-  min-height: 100vh;
-}
-
-header {
+.feature {
   padding: 25px;
-  text-align: center;
-  border-bottom: 1px solid #222;
+  border: 1px solid #202020;
+  background: #0d0d0d;
+  border-radius: 18px;
 }
 
-.logo {
-  font-size: 32px;
-  font-weight: bold;
-}
-
-.logo span {
-  color: #8b5cf6;
-}
-
-.hero {
-  text-align: center;
-  padding: 70px 20px;
-}
-
-.hero h1 {
-  font-size: 48px;
+.feature-icon {
+  font-size: 25px;
   margin-bottom: 15px;
 }
 
-.hero p {
-  color: #999;
-  font-size: 18px;
-}
-
-.apps {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-
-.card {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 18px;
-  padding: 25px;
-  margin-bottom: 20px;
-  transition: 0.25s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  border-color: #8b5cf6;
-}
-
-.card h2 {
+.feature h3 {
   margin-bottom: 8px;
 }
 
-.card p {
-  color: #999;
-  margin-bottom: 18px;
+.feature p {
+  color: #777;
+  line-height: 1.5;
+  font-size: 14px;
 }
 
-.download {
-  display: inline-block;
-  background: #8b5cf6;
-  color: white;
-  text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 10px;
-  font-weight: bold;
+/* CTA */
+
+.cta {
+  text-align: center;
+  padding: 90px 20px;
+  border: 1px solid #222;
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at center,rgba(124,58,237,.15),transparent 60%),
+    #0b0b0b;
 }
 
-.download:hover {
-  background: #a78bfa;
+.cta h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
 }
 
-.badge {
-  display: inline-block;
-  background: #222;
-  color: #aaa;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  margin-bottom: 12px;
+.cta p {
+  color: #888;
+  margin-bottom: 25px;
 }
+
+/* Footer */
 
 footer {
+  border-top: 1px solid #1c1c1c;
+  padding: 35px 20px;
   text-align: center;
   color: #666;
-  padding: 50px 20px;
+  font-size: 13px;
+}
+
+footer span {
+  color: #8b5cf6;
+}
+
+/* Mobile */
+
+@media(max-width:700px) {
+
+  .navlinks {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 90px;
+  }
+
+  .hero h1 {
+    letter-spacing: -3px;
+  }
+
+  .stats,
+  .apps,
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  section {
+    padding: 65px 18px;
+  }
+
+  .section-title h2 {
+    font-size: 34px;
+  }
+
+  .cta h2 {
+    font-size: 32px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<header>
-  <div class="logo">Toji <span>Labs</span></div>
-</header>
+<nav>
+  <div class="navbar">
+    <div class="logo">Toji <span>Labs</span></div>
 
-<section class="hero">
-  <h1>Create Without Limits.</h1>
-  <p>Powerful editing tools built for creators.</p>
-</section>
+    <div class="navlinks">
+      <a href="#apps">Apps</a>
+      <a href="#features">Features</a>
+      <a href="#about">About</a>
+    </div>
+  </div>
+</nav>
 
-<section class="apps">
+<!-- HERO -->
 
-  <div class="card">
-    <span class="badge">ANDROID • v4.0</span>
-    <h2>Toji Motion</h2>
-    <p>A powerful mobile editing experience built for creators.</p>
+<div class="hero">
 
-    <a class="download"
-       href="https://github.com/vynexx313/tojilabapps/releases/tag/v4.0">
-       Download APK
-    </a>
+  <div class="tag">
+    ✦ Independent Creative Software
   </div>
 
-  <div class="card">
-    <span class="badge">MORE APPS</span>
-    <h2>Coming Soon</h2>
-    <p>More Toji Labs projects are being worked on.</p>
+  <h1>
+    Create.<br>
+    <span class="gradient">Edit. Repeat.</span>
+  </h1>
+
+  <p>
+    Toji Labs builds powerful editing tools designed
+    for creators who want more control over their content.
+  </p>
+
+  <div class="hero-buttons">
+
+    <a href="#apps" class="button primary">
+      Explore Apps
+    </a>
+
+    <a href="#about" class="button secondary">
+      Learn More
+    </a>
+
+  </div>
+
+</div>
+
+<!-- STATS -->
+
+<div class="stats">
+
+  <div class="stat">
+    <h2>01</h2>
+    <p>Current App</p>
+  </div>
+
+  <div class="stat">
+    <h2>2026</h2>
+    <p>Founded</p>
+  </div>
+
+  <div class="stat">
+    <h2>∞</h2>
+    <p>Ideas</p>
+  </div>
+
+</div>
+
+<!-- APPS -->
+
+<section id="apps">
+
+  <div class="section-title">
+    <small>OUR SOFTWARE</small>
+    <h2>Apps built for creators.</h2>
+  </div>
+
+  <div class="apps">
+
+    <div class="card">
+
+      <div class="app-icon">
+        T
+      </div>
+
+      <span class="version">
+        ANDROID • v4.0
+      </span>
+
+      <h3>Toji Motion</h3>
+
+      <p>
+        A powerful mobile editing experience
+        built for creators, editors and content makers.
+      </p>
+
+      <a
+        class="download"
+        href="https://www.mediafire.com/file/pyqtukcvnxyvc3p/Toji_Motion_4_Jul.apk/download"
+        target="_blank">
+        Download APK →
+      </a>
+
+    </div>
+
+    <div class="card">
+
+      <div class="app-icon">
+        +
+      </div>
+
+      <span class="version">
+        COMING SOON
+      </span>
+
+      <h3>More Projects</h3>
+
+      <p>
+        More editing tools and creative projects
+        are currently being developed by Toji Labs.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section id="features">
+
+  <div class="section-title">
+    <small>WHY TOJI LABS</small>
+    <h2>Made different.</h2>
+  </div>
+
+  <div class="features">
+
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <h3>Fast</h3>
+      <p>
+        Designed to keep your workflow quick
+        and your editing process smooth.
+      </p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🎨</div>
+      <h3>Creative</h3>
+      <p>
+        Tools focused on giving creators
+        more freedom and control.
+      </p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">📱</div>
+      <h3>Mobile First</h3>
+      <p>
+        Built with mobile creators in mind
+        from the beginning.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+  <div class="cta">
+
+    <h2>Built by creators.</h2>
+
+    <p>
+      Toji Labs is an independent project focused
+      on building useful creative software.
+    </p>
+
+    <a
+      href="https://github.com/vynexx313/tojilabapps"
+      target="_blank"
+      class="button secondary">
+      View GitHub →
+    </a>
+
   </div>
 
 </section>
 
 <footer>
-  © 2026 Toji Labs
+  © 2026 <span>Toji Labs</span>. All rights reserved.
 </footer>
 
 </body>

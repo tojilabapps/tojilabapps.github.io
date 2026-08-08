@@ -6,11 +6,11 @@ We create editing apps and tools designed to make content creation easier, faste
 
 ## 📱 Our Apps
 
-### App Name
-Short description of what the app does.
+### toji motion
+toji motion a copy of alight motion but better contains more effects and 3d module's
 
-### App Name 2
-Short description of what the app does.
+### ae motion 
+ae motion is a copy of after effects and has same things as after effects
 
 ## ✨ Features
 
@@ -18,14 +18,6 @@ Short description of what the app does.
 - Fast performance
 - Modern design
 - Regular updates
-
-## 📥 Downloads
-
-Visit our website or releases page to download our apps.
-
-## 📞 Contact
-
-GitHub: https://github.com/YourUsername
 
 ## 🚀 About
 

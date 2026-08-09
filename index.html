@@ -1,758 +1,103 @@
+cat > index.html <<'EOF'
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Toji Labs</title>
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+<link rel="stylesheet" href="style.css">
 
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#050505;
-    color:#fff;
-    overflow-x:hidden;
-}
-
-/* BACKGROUND */
-
-#particles{
-    position:fixed;
-    inset:0;
-    width:100%;
-    height:100%;
-    z-index:-10;
-    pointer-events:none;
-}
-
-.background{
-    position:fixed;
-    inset:0;
-    z-index:-5;
-    overflow:hidden;
-    pointer-events:none;
-    background:
-        radial-gradient(circle at 20% 20%,#7c3aed22,transparent 35%),
-        radial-gradient(circle at 80% 70%,#2563eb20,transparent 35%),
-        #050505;
-}
-
-.grid{
-    position:absolute;
-    inset:-100%;
-    width:300%;
-    height:300%;
-
-    background-image:
-        linear-gradient(#ffffff08 1px,transparent 1px),
-        linear-gradient(90deg,#ffffff08 1px,transparent 1px);
-
-    background-size:50px 50px;
-
-    transform:perspective(500px) rotateX(55deg);
-
-    animation:gridMove 10s linear infinite;
-}
-
-@keyframes gridMove{
-    from{
-        transform:perspective(500px) rotateX(55deg) translateY(0);
-    }
-
-    to{
-        transform:perspective(500px) rotateX(55deg) translateY(50px);
-    }
-}
-
-.orb{
-    position:absolute;
-    border-radius:50%;
-    filter:blur(100px);
-    pointer-events:none;
-}
-
-.orb1{
-    width:350px;
-    height:350px;
-    background:#7c3aed;
-    opacity:.18;
-    top:-100px;
-    left:-100px;
-    animation:orb1 8s ease-in-out infinite alternate;
-}
-
-.orb2{
-    width:400px;
-    height:400px;
-    background:#2563eb;
-    opacity:.14;
-    right:-150px;
-    top:30%;
-    animation:orb2 10s ease-in-out infinite alternate;
-}
-
-.orb3{
-    width:300px;
-    height:300px;
-    background:#ec4899;
-    opacity:.10;
-    bottom:-100px;
-    left:40%;
-    animation:orb3 9s ease-in-out infinite alternate;
-}
-
-@keyframes orb1{
-    to{
-        transform:translate(250px,180px) scale(1.3);
-    }
-}
-
-@keyframes orb2{
-    to{
-        transform:translate(-200px,150px) scale(1.2);
-    }
-}
-
-@keyframes orb3{
-    to{
-        transform:translate(150px,-150px) scale(1.3);
-    }
-}
-
-/* NAV */
-
-nav{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:#050505aa;
-    backdrop-filter:blur(20px);
-    border-bottom:1px solid #ffffff10;
-}
-
-.nav{
-    max-width:1100px;
-    margin:auto;
-    padding:18px 22px;
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    font-size:22px;
-    font-weight:800;
-    letter-spacing:-1px;
-}
-
-.logo span{
-    color:#9b6cff;
-}
-
-.navlinks{
-    display:flex;
-    gap:25px;
-}
-
-.navlinks a{
-    color:#888;
-    text-decoration:none;
-    font-size:14px;
-    transition:.3s;
-}
-
-.navlinks a:hover{
-    color:#fff;
-}
-
-/* HERO */
-
-.hero{
-    min-height:90vh;
-
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-
-    text-align:center;
-    padding:80px 20px;
-
-    position:relative;
-}
-
-.badge{
-    display:inline-block;
-
-    padding:9px 16px;
-
-    border:1px solid #8b5cf655;
-    background:#8b5cf615;
-
-    border-radius:50px;
-
-    color:#c4adff;
-    font-size:13px;
-
-    margin-bottom:25px;
-
-    animation:badgePulse 2.5s ease-in-out infinite;
-}
-
-@keyframes badgePulse{
-    50%{
-        box-shadow:0 0 35px #8b5cf633;
-    }
-}
-
-.hero h1{
-    font-size:clamp(55px,10vw,100px);
-
-    line-height:.9;
-
-    letter-spacing:-6px;
-
-    animation:heroIn 1s ease;
-}
-
-.gradient{
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #a78bfa,
-            #60a5fa,
-            #f472b6,
-            #fff
-        );
-
-    background-size:400%;
-
-    -webkit-background-clip:text;
-    background-clip:text;
-
-    color:transparent;
-
-    animation:gradientMove 5s linear infinite;
-}
-
-@keyframes gradientMove{
-    to{
-        background-position:400%;
-    }
-}
-
-@keyframes heroIn{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-.hero p{
-    max-width:600px;
-
-    margin:30px auto;
-
-    color:#888;
-
-    line-height:1.7;
-
-    font-size:17px;
-}
-
-.buttons{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:10px;
-}
-
-.button{
-    display:inline-block;
-
-    padding:14px 22px;
-
-    border-radius:12px;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    transition:.3s;
-}
-
-.primary{
-    background:#fff;
-    color:#000;
-}
-
-.primary:hover{
-    transform:translateY(-5px);
-    box-shadow:0 15px 40px #fff2;
-}
-
-.secondary{
-    border:1px solid #333;
-    color:#fff;
-}
-
-.secondary:hover{
-    border-color:#8b5cf6;
-    transform:translateY(-5px);
-}
-
-.scroll{
-    margin-top:70px;
-
-    color:#555;
-
-    font-size:12px;
-
-    animation:bounce 2s infinite;
-}
-
-@keyframes bounce{
-    50%{
-        transform:translateY(10px);
-    }
-}
-
-/* SECTIONS */
-
-section{
-    max-width:1100px;
-
-    margin:auto;
-
-    padding:100px 20px;
-}
-
-.title small{
-    color:#9b6cff;
-
-    font-weight:bold;
-}
-
-.title h2{
-    font-size:45px;
-
-    margin-top:10px;
-
-    letter-spacing:-2px;
-}
-
-/* APPS */
-
-.apps{
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:20px;
-
-    margin-top:40px;
-}
-
-.card{
-    position:relative;
-
-    overflow:hidden;
-
-    background:#0d0d0dcc;
-
-    border:1px solid #ffffff12;
-
-    border-radius:25px;
-
-    padding:30px;
-
-    backdrop-filter:blur(15px);
-
-    transition:.4s;
-}
-
-.card::before{
-    content:"";
-
-    position:absolute;
-
-    width:220px;
-    height:220px;
-
-    background:#8b5cf6;
-
-    filter:blur(100px);
-
-    opacity:.07;
-
-    right:-100px;
-    top:-100px;
-
-    transition:.5s;
-}
-
-.card:hover{
-    transform:translateY(-10px) scale(1.01);
-
-    border-color:#8b5cf655;
-
-    box-shadow:
-        0 20px 70px #000,
-        0 0 50px #8b5cf611;
-}
-
-.card:hover::before{
-    transform:scale(2);
-    opacity:.13;
-}
-
-.icon{
-    width:70px;
-    height:70px;
-
-    border-radius:20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #8b5cf6,
-            #2563eb
-        );
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    font-size:25px;
-    font-weight:bold;
-
-    margin-bottom:25px;
-
-    box-shadow:
-        0 10px 40px #8b5cf633;
-
-    transition:.4s;
-}
-
-.card:hover .icon{
-    transform:rotate(-6deg) scale(1.08);
-}
-
-.version{
-    display:inline-block;
-
-    background:#181818;
-
-    color:#aaa;
-
-    padding:6px 10px;
-
-    border-radius:8px;
-
-    font-size:11px;
-
-    margin-bottom:15px;
-}
-
-.card h3{
-    font-size:27px;
-
-    margin-bottom:10px;
-}
-
-.card p{
-    color:#888;
-
-    line-height:1.6;
-
-    margin-bottom:22px;
-}
-
-.download{
-    display:inline-block;
-
-    background:#8b5cf6;
-
-    color:#fff;
-
-    padding:13px 20px;
-
-    border-radius:11px;
-
-    text-decoration:none;
-
-    font-weight:bold;
-
-    transition:.3s;
-}
-
-.download:hover{
-    background:#a78bfa;
-
-    transform:translateX(6px);
-
-    box-shadow:0 8px 30px #8b5cf633;
-}
-
-/* FEATURES */
-
-.features{
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:15px;
-
-    margin-top:40px;
-}
-
-.feature{
-    background:#0c0c0ccc;
-
-    border:1px solid #ffffff10;
-
-    border-radius:20px;
-
-    padding:27px;
-
-    backdrop-filter:blur(12px);
-
-    transition:.3s;
-}
-
-.feature:hover{
-    transform:translateY(-8px);
-
-    border-color:#8b5cf644;
-
-    box-shadow:0 15px 50px #000;
-}
-
-.feature-icon{
-    font-size:28px;
-
-    margin-bottom:15px;
-}
-
-.feature h3{
-    margin-bottom:9px;
-}
-
-.feature p{
-    color:#777;
-
-    line-height:1.6;
-
-    font-size:14px;
-}
-
-/* SOCIAL */
-
-.social{
-    max-width:1000px;
-
-    margin:50px auto;
-
-    padding:80px 20px;
-
-    text-align:center;
-
-    border:1px solid #ffffff12;
-
-    border-radius:30px;
-
-    background:
-        radial-gradient(
-            circle,
-            #8b5cf622,
-            transparent 60%
-        ),
-        #0a0a0a;
-
-    overflow:hidden;
-}
-
-.social h2{
-    font-size:40px;
-
-    margin-bottom:12px;
-}
-
-.social p{
-    color:#777;
-
-    margin-bottom:25px;
-}
-
-/* FOOTER */
-
-footer{
-    border-top:1px solid #ffffff10;
-
-    padding:40px;
-
-    text-align:center;
-
-    color:#555;
-
-    font-size:13px;
-}
-
-footer span{
-    color:#9b6cff;
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-    .navlinks{
-        display:none;
-    }
-
-    .hero{
-        min-height:85vh;
-    }
-
-    .hero h1{
-        letter-spacing:-4px;
-    }
-
-    .apps,
-    .features{
-        grid-template-columns:1fr;
-    }
-
-    section{
-        padding:70px 18px;
-    }
-
-    .title h2{
-        font-size:34px;
-    }
-
-    .social{
-        margin:20px;
-    }
-}
-</style>
 </head>
 
 <body>
-
-<!-- MOVING BACKGROUND -->
 
 <canvas id="particles"></canvas>
 
 <div class="background">
 
-    <div class="grid"></div>
+<div class="grid"></div>
 
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+<div class="orb orb3"></div>
 
 </div>
 
-
-<!-- NAV -->
 
 <nav>
 
 <div class="nav">
 
-    <div class="logo">
-        Toji <span>Labs</span>
-    </div>
+<div class="logo">
+Toji <span>Labs</span>
+</div>
 
-    <div class="navlinks">
+<div class="navlinks">
 
-        <a href="#apps">Apps</a>
+<a href="#apps">Apps</a>
 
-        <a href="#features">Features</a>
+<a href="#features">Features</a>
 
-        <a href="#social">Social</a>
+<a href="#social">Social</a>
 
-    </div>
+</div>
 
 </div>
 
 </nav>
 
 
-<!-- HERO -->
-
 <div class="hero">
 
-    <div class="badge">
-        ✦ INDEPENDENT CREATIVE SOFTWARE
-    </div>
+<div class="badge">
+✦ INDEPENDENT CREATIVE SOFTWARE
+</div>
 
-    <h1>
-        CREATE.<br>
-        <span class="gradient">
-            EDIT. REPEAT.
-        </span>
-    </h1>
+<h1>
+CREATE.<br>
+<span class="gradient">
+EDIT. REPEAT.
+</span>
+</h1>
 
-    <p>
-        Powerful editing tools built for mobile creators.
-        Welcome to Toji Labs.
-    </p>
+<p>
+Powerful editing tools built for mobile creators.
+Welcome to Toji Labs.
+</p>
 
-    <div class="buttons">
+<div class="buttons">
 
-        <a
-            href="#apps"
-            class="button primary">
-            Explore Apps
-        </a>
+<a
+href="#apps"
+class="button primary">
+Explore Apps
+</a>
 
-        <a
-            href="https://github.com/vynexx313/tojilabapps"
-            target="_blank"
-            class="button secondary">
-            GitHub
-        </a>
-
-    </div>
-
-    <div class="scroll">
-        SCROLL ↓
-    </div>
+<a
+href="https://github.com/vynexx313/tojilabapps"
+target="_blank"
+class="button secondary">
+GitHub
+</a>
 
 </div>
 
+</div>
 
-<!-- APPS -->
 
 <section id="apps">
 
 <div class="title">
 
-    <small>OUR SOFTWARE</small>
+<small>OUR SOFTWARE</small>
 
-    <h2>
-        Built for creators.
-    </h2>
+<h2>Built for creators.</h2>
 
 </div>
 
@@ -760,112 +105,101 @@ footer span{
 <div class="apps">
 
 
-<!-- TOJI MOTION -->
-
 <div class="card">
 
-    <div class="icon">
-        T
-    </div>
+<div class="icon">
+T
+</div>
 
-    <span class="version">
-        ANDROID • v4.0
-    </span>
+<span class="version">
+ANDROID • v4.0
+</span>
 
-    <h3>
-        Toji Motion
-    </h3>
+<h3>
+Toji Motion
+</h3>
 
-    <p>
-        A powerful mobile editing app designed
-        for creators and video editors.
-    </p>
+<p>
+A powerful mobile editing app designed
+for creators and video editors.
+</p>
 
-    <a
-        class="download"
-        href="https://www.mediafire.com/file/iect9wmu60y8jwc/Toji_Motion_4_Jul.apk/file"
-        target="_blank">
+<a
+class="download"
+href="https://www.mediafire.com/file/pyqtukcvnxyvc3p/Toji_Motion_4_Jul.apk/download"
+target="_blank">
 
-        Download APK →
+Download APK →
 
-    </a>
+</a>
 
 </div>
 
 
-<!-- AE MOTION -->
-
 <div class="card">
 
-    <div class="icon">
-        AE
-    </div>
+<div class="icon">
+AE
+</div>
 
-    <span class="version">
-        iOS • v2.5
-    </span>
+<span class="version">
+iOS • v2.5
+</span>
 
-    <h3>
-        AE Motion
-    </h3>
+<h3>
+AE Motion
+</h3>
 
-    <p>
-        An editing experience focused on
-        motion graphics and creative editing.
-    </p>
+<p>
+Motion graphics and creative editing
+tools for creators.
+</p>
 
-    <a
-        class="download"
-        href="https://www.mediafire.com/file/qoqryffftaox1lz/AE_Motion_2.5.ipa/file"
-        target="_blank">
+<a
+class="download"
+href="https://www.mediafire.com/file/qoqryffftaox1lz/AE_Motion_2.5.ipa/file"
+target="_blank">
 
-        Download IPA →
+Download IPA →
 
-    </a>
+</a>
 
 </div>
 
 
-<!-- COMING SOON -->
-
 <div class="card">
 
-    <div class="icon">
-        +
-    </div>
-
-    <span class="version">
-        COMING SOON
-    </span>
-
-    <h3>
-        More Projects
-    </h3>
-
-    <p>
-        More creative tools are currently
-        being developed by Toji Labs.
-    </p>
-
+<div class="icon">
++
 </div>
 
+<span class="version">
+COMING SOON
+</span>
+
+<h3>
+More Projects
+</h3>
+
+<p>
+More creative tools are currently
+being developed by Toji Labs.
+</p>
+
+</div>
 
 </div>
 
 </section>
 
 
-<!-- FEATURES -->
-
 <section id="features">
 
 <div class="title">
 
-    <small>FEATURES</small>
+<small>FEATURES</small>
 
-    <h2>
-        Why Toji Labs?
-    </h2>
+<h2>Why Toji Labs?</h2>
 
 </div>
 
@@ -874,53 +208,45 @@ footer span{
 
 <div class="feature">
 
-    <div class="feature-icon">
-        ⚡
-    </div>
+<div class="feature-icon">
+⚡
+</div>
 
-    <h3>
-        Fast
-    </h3>
+<h3>Fast</h3>
 
-    <p>
-        Designed for smooth and efficient
-        editing workflows.
-    </p>
+<p>
+Designed for smooth editing workflows.
+</p>
 
 </div>
 
 
 <div class="feature">
 
-    <div class="feature-icon">
-        🎨
-    </div>
+<div class="feature-icon">
+🎨
+</div>
 
-    <h3>
-        Creative
-    </h3>
+<h3>Creative</h3>
 
-    <p>
-        Tools made to give creators more
-        freedom and control.
-    </p>
+<p>
+Tools made for creators.
+</p>
 
 </div>
 
 
 <div class="feature">
 
-    <div class="feature-icon">
-        📱
-    </div>
+<div class="feature-icon">
+📱
+</div>
 
-    <h3>
-        Mobile First
-    </h3>
+<h3>Mobile First</h3>
 
-    <p>
-        Built specifically for mobile creators.
-    </p>
+<p>
+Built specifically for mobile creators.
+</p>
 
 </div>
 
@@ -929,252 +255,38 @@ footer span{
 </section>
 
 
-<!-- SOCIAL -->
+<div class="social" id="social">
 
-<div
-    class="social"
-    id="social">
+<h2>
+Follow Toji Labs
+</h2>
 
-    <h2>
-        Follow Toji Labs
-    </h2>
+<p>
+Edits, updates and new projects.
+</p>
 
-    <p>
-        Edits, updates and new projects.
-    </p>
+<a
+href="https://www.tiktok.com/@vynexx313"
+target="_blank"
+class="button primary">
 
-    <a
-        href="https://www.tiktok.com/@vynexx313"
-        target="_blank"
-        class="button primary">
+TikTok • @vynexx313
 
-        TikTok • @vynexx313
-
-    </a>
+</a>
 
 </div>
 
 
-<!-- FOOTER -->
-
 <footer>
 
-    © 2026
-    <span>Toji Labs</span>
-    · Built for creators.
+© 2026 <span>Toji Labs</span>
 
 </footer>
 
 
-<script>
-
-/* REAL MOVING PARTICLES */
-
-const canvas = document.getElementById("particles");
-
-const ctx = canvas.getContext("2d");
-
-let particles = [];
-
-let mouse = {
-    x:null,
-    y:null
-};
-
-function resize(){
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    particles = [];
-
-    const amount =
-        Math.min(
-            140,
-            Math.floor(
-                window.innerWidth *
-                window.innerHeight /
-                9000
-            )
-        );
-
-    for(let i=0;i<amount;i++){
-
-        particles.push({
-
-            x:Math.random()*canvas.width,
-
-            y:Math.random()*canvas.height,
-
-            size:Math.random()*2+0.5,
-
-            speedX:(Math.random()-0.5)*0.6,
-
-            speedY:(Math.random()-0.5)*0.6
-
-        });
-
-    }
-
-}
-
-window.addEventListener(
-    "resize",
-    resize
-);
-
-
-window.addEventListener(
-    "mousemove",
-    function(e){
-
-        mouse.x = e.clientX;
-        mouse.y = e.clientY;
-
-    }
-);
-
-
-window.addEventListener(
-    "touchmove",
-    function(e){
-
-        if(e.touches.length){
-
-            mouse.x =
-                e.touches[0].clientX;
-
-            mouse.y =
-                e.touches[0].clientY;
-
-        }
-
-    }
-);
-
-
-function animate(){
-
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-    for(let i=0;i<particles.length;i++){
-
-        const p = particles[i];
-
-        p.x += p.speedX;
-        p.y += p.speedY;
-
-
-        if(p.x < 0)
-            p.x = canvas.width;
-
-        if(p.x > canvas.width)
-            p.x = 0;
-
-        if(p.y < 0)
-            p.y = canvas.height;
-
-        if(p.y > canvas.height)
-            p.y = 0;
-
-
-        /* MOUSE EFFECT */
-
-        if(mouse.x !== null){
-
-            const dx =
-                p.x - mouse.x;
-
-            const dy =
-                p.y - mouse.y;
-
-            const distance =
-                Math.sqrt(dx*dx + dy*dy);
-
-            if(distance < 130){
-
-                p.x += dx / distance * 0.8;
-                p.y += dy / distance * 0.8;
-
-            }
-
-        }
-
-
-        ctx.beginPath();
-
-        ctx.arc(
-            p.x,
-            p.y,
-            p.size,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle =
-            "rgba(160,120,255,0.75)";
-
-        ctx.fill();
-
-
-        /* CONNECTIONS */
-
-        for(let j=i+1;j<particles.length;j++){
-
-            const p2 = particles[j];
-
-            const dx =
-                p.x - p2.x;
-
-            const dy =
-                p.y - p2.y;
-
-            const distance =
-                Math.sqrt(dx*dx + dy*dy);
-
-            if(distance < 100){
-
-                ctx.beginPath();
-
-                ctx.moveTo(
-                    p.x,
-                    p.y
-                );
-
-                ctx.lineTo(
-                    p2.x,
-                    p2.y
-                );
-
-                ctx.strokeStyle =
-                    "rgba(140,100,255," +
-                    (1-distance/100)*0.18 +
-                    ")";
-
-                ctx.lineWidth = 1;
-
-                ctx.stroke();
-
-            }
-
-        }
-
-    }
-
-    requestAnimationFrame(animate);
-
-}
-
-resize();
-
-animate();
-
-</script>
+<script src="script.js"></script>
 
 </body>
+
 </html>
+EOF

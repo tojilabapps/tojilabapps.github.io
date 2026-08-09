@@ -1,292 +1,173 @@
 cat > index.html <<'EOF'
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Toji Labs</title>
-
 <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
 
-<canvas id="particles"></canvas>
+<canvas id="canvas"></canvas>
 
-<div class="background">
+<header>
+  <div class="logo">TOJI<span>LABS</span></div>
 
-<div class="grid"></div>
+  <nav>
+    <a href="#apps">Apps</a>
+    <a href="#about">About</a>
+    <a href="#social">Social</a>
+  </nav>
+</header>
 
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
-<div class="orb orb3"></div>
+<main>
 
-</div>
+<section class="hero">
 
+  <div class="pill">✦ CREATIVE SOFTWARE</div>
 
-<nav>
+  <h1>
+    EDIT<br>
+    <span>WITHOUT LIMITS.</span>
+  </h1>
 
-<div class="nav">
+  <p>
+    Powerful editing tools made for creators.
+  </p>
 
-<div class="logo">
-Toji <span>Labs</span>
-</div>
+  <div class="buttons">
+    <a href="#apps" class="btn main">Explore Apps</a>
 
-<div class="navlinks">
+    <a
+      href="https://github.com/vynexx313/tojilabapps"
+      target="_blank"
+      class="btn">
+      GitHub
+    </a>
+  </div>
 
-<a href="#apps">Apps</a>
-
-<a href="#features">Features</a>
-
-<a href="#social">Social</a>
-
-</div>
-
-</div>
-
-</nav>
-
-
-<div class="hero">
-
-<div class="badge">
-✦ INDEPENDENT CREATIVE SOFTWARE
-</div>
-
-<h1>
-CREATE.<br>
-<span class="gradient">
-EDIT. REPEAT.
-</span>
-</h1>
-
-<p>
-Powerful editing tools built for mobile creators.
-Welcome to Toji Labs.
-</p>
-
-<div class="buttons">
-
-<a
-href="#apps"
-class="button primary">
-Explore Apps
-</a>
-
-<a
-href="https://github.com/vynexx313/tojilabapps"
-target="_blank"
-class="button secondary">
-GitHub
-</a>
-
-</div>
-
-</div>
+</section>
 
 
 <section id="apps">
 
-<div class="title">
+  <div class="heading">
+    <small>01 / APPS</small>
+    <h2>Our software</h2>
+  </div>
 
-<small>OUR SOFTWARE</small>
+  <div class="apps">
 
-<h2>Built for creators.</h2>
+    <article class="card">
 
-</div>
+      <div class="appicon">T</div>
 
+      <div class="tag">ANDROID · v4.0</div>
 
-<div class="apps">
+      <h3>Toji Motion</h3>
 
+      <p>
+        A powerful mobile editing app
+        built for video creators.
+      </p>
 
-<div class="card">
+      <a
+        class="download"
+        href="https://www.mediafire.com/file/pyqtukcvnxyvc3p/Toji_Motion_4_Jul.apk/download"
+        target="_blank">
+        Download APK →
+      </a>
 
-<div class="icon">
-T
-</div>
-
-<span class="version">
-ANDROID • v4.0
-</span>
-
-<h3>
-Toji Motion
-</h3>
-
-<p>
-A powerful mobile editing app designed
-for creators and video editors.
-</p>
-
-<a
-class="download"
-href="https://www.mediafire.com/file/pyqtukcvnxyvc3p/Toji_Motion_4_Jul.apk/download"
-target="_blank">
-
-Download APK →
-
-</a>
-
-</div>
+    </article>
 
 
-<div class="card">
+    <article class="card">
 
-<div class="icon">
-AE
-</div>
+      <div class="appicon ae">AE</div>
 
-<span class="version">
-iOS • v2.5
-</span>
+      <div class="tag">iOS · v2.5</div>
 
-<h3>
-AE Motion
-</h3>
+      <h3>AE Motion</h3>
 
-<p>
-Motion graphics and creative editing
-tools for creators.
-</p>
+      <p>
+        Motion graphics and creative
+        editing tools for creators.
+      </p>
 
-<a
-class="download"
-href="https://www.mediafire.com/file/qoqryffftaox1lz/AE_Motion_2.5.ipa/file"
-target="_blank">
+      <a
+        class="download"
+        href="https://www.mediafire.com/file/qoqryffftaox1lz/AE_Motion_2.5.ipa/file"
+        target="_blank">
+        Download IPA →
+      </a>
 
-Download IPA →
+    </article>
 
-</a>
-
-</div>
-
-
-<div class="card">
-
-<div class="icon">
-+
-</div>
-
-<span class="version">
-COMING SOON
-</span>
-
-<h3>
-More Projects
-</h3>
-
-<p>
-More creative tools are currently
-being developed by Toji Labs.
-</p>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
-<section id="features">
+<section id="about">
 
-<div class="title">
+  <div class="heading">
+    <small>02 / ABOUT</small>
+    <h2>Built differently.</h2>
+  </div>
 
-<small>FEATURES</small>
+  <div class="features">
 
-<h2>Why Toji Labs?</h2>
+    <div class="feature">
+      <b>⚡</b>
+      <h3>Fast</h3>
+      <p>Made for smooth editing workflows.</p>
+    </div>
 
-</div>
+    <div class="feature">
+      <b>✦</b>
+      <h3>Creative</h3>
+      <p>Tools designed around creators.</p>
+    </div>
 
+    <div class="feature">
+      <b>◈</b>
+      <h3>Mobile</h3>
+      <p>Designed for editing on the go.</p>
+    </div>
 
-<div class="features">
-
-<div class="feature">
-
-<div class="feature-icon">
-⚡
-</div>
-
-<h3>Fast</h3>
-
-<p>
-Designed for smooth editing workflows.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-🎨
-</div>
-
-<h3>Creative</h3>
-
-<p>
-Tools made for creators.
-</p>
-
-</div>
-
-
-<div class="feature">
-
-<div class="feature-icon">
-📱
-</div>
-
-<h3>Mobile First</h3>
-
-<p>
-Built specifically for mobile creators.
-</p>
-
-</div>
-
-</div>
+  </div>
 
 </section>
 
 
-<div class="social" id="social">
+<section id="social" class="social">
 
-<h2>
-Follow Toji Labs
-</h2>
+  <small>03 / SOCIAL</small>
 
-<p>
-Edits, updates and new projects.
-</p>
+  <h2>Follow Toji Labs</h2>
 
-<a
-href="https://www.tiktok.com/@vynexx313"
-target="_blank"
-class="button primary">
+  <p>Updates, edits and new projects.</p>
 
-TikTok • @vynexx313
+  <a
+    href="https://www.tiktok.com/@vynexx313"
+    target="_blank"
+    class="btn main">
+    TikTok · @vynexx313
+  </a>
 
-</a>
+</section>
 
-</div>
+</main>
 
 
 <footer>
-
-© 2026 <span>Toji Labs</span>
-
+  © 2026 TOJI LABS
 </footer>
-
 
 <script src="script.js"></script>
 
 </body>
-
 </html>
 EOF

@@ -1,38 +1,30 @@
 cat > script.js <<'EOF'
-const canvas = document.getElementById("particles");
-const ctx = canvas.getContext("2d");
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
 
-let particles = [];
-
-let mouse = {
-x:null,
-y:null
-};
+let particles=[];
+let mouse={x:null,y:null};
 
 function resize(){
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+canvas.width=innerWidth;
+canvas.height=innerHeight;
 
-particles = [];
+particles=[];
 
-let amount = Math.min(
-140,
-Math.floor(innerWidth * innerHeight / 9000)
+let count=Math.min(
+window.innerWidth<700?70:130,
+Math.floor(innerWidth*innerHeight/8500)
 );
 
-for(let i=0;i<amount;i++){
+for(let i=0;i<count;i++){
 
 particles.push({
-
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
-
-size:Math.random()*2+0.5,
-
-vx:(Math.random()-.5)*0.7,
-vy:(Math.random()-.5)*0.7
-
+vx:(Math.random()-.5)*.45,
+vy:(Math.random()-.5)*.45,
+size:Math.random()*2+0.5
 });
 
 }
@@ -42,13 +34,11 @@ vy:(Math.random()-.5)*0.7
 addEventListener("resize",resize);
 
 addEventListener("mousemove",e=>{
-
 mouse.x=e.clientX;
 mouse.y=e.clientY;
-
 });
 
-function animate(){
+function draw(){
 
 ctx.clearRect(
 0,
@@ -66,21 +56,20 @@ p.y+=p.vy;
 
 if(p.x<0)p.x=canvas.width;
 if(p.x>canvas.width)p.x=0;
-
 if(p.y<0)p.y=canvas.height;
 if(p.y>canvas.height)p.y=0;
 
-if(mouse.x!==null){
+if(mouse.x){
 
 let dx=p.x-mouse.x;
 let dy=p.y-mouse.y;
 
 let distance=Math.sqrt(dx*dx+dy*dy);
 
-if(distance<150){
+if(distance<130){
 
-p.x+=dx/distance*0.7;
-p.y+=dy/distance*0.7;
+p.x+=dx/distance*.5;
+p.y+=dy/distance*.5;
 
 }
 
@@ -96,30 +85,31 @@ p.size,
 Math.PI*2
 );
 
-ctx.fillStyle="rgba(170,120,255,.8)";
+ctx.fillStyle="#bda7ff";
 
 ctx.fill();
 
 for(let j=i+1;j<particles.length;j++){
 
-let p2=particles[j];
+let q=particles[j];
 
-let dx=p.x-p2.x;
-let dy=p.y-p2.y;
+let dx=p.x-q.x;
+let dy=p.y-q.y;
 
 let distance=Math.sqrt(dx*dx+dy*dy);
 
-if(distance<100){
+if(distance<115){
 
 ctx.beginPath();
 
 ctx.moveTo(p.x,p.y);
-ctx.lineTo(p2.x,p2.y);
+ctx.lineTo(q.x,q.y);
 
 ctx.strokeStyle=
-"rgba(150,100,255,"+
-(1-distance/100)*.2+
-")";
+"rgba(157,108,255,"+
+((1-distance/115)*.18)+")";
+
+ctx.lineWidth=.7;
 
 ctx.stroke();
 
@@ -129,10 +119,10 @@ ctx.stroke();
 
 }
 
-requestAnimationFrame(animate);
+requestAnimationFrame(draw);
 
 }
 
 resize();
-animate();
+draw();
 EOF
